@@ -2,6 +2,9 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
     <!--Standard -->
     <persistence-unit name="p1" transaction-type="RESOURCE_LOCAL">
+        <!-- reg entity -->
+        <class>com.web.mvc.entity.one2one.Person</class>
+            
         <properties>
             <!--
             預設情況下，對象關係映射不會自動發生，但是您可以配置應用程序服務器以使用
