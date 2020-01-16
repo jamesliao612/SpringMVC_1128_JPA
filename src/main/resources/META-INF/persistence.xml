@@ -4,6 +4,9 @@
     <persistence-unit name="p1" transaction-type="RESOURCE_LOCAL">
         <!-- reg entity -->
         <class>com.web.mvc.entity.one2one.Person</class>
+        <class>com.web.mvc.entity.one2one.Husband</class>
+        <class>com.web.mvc.entity.one2one.Wife</class>
+
             
         <properties>
             <!--
@@ -16,6 +19,7 @@
             <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
             <property name="javax.persistence.jdbc.user" value="app"/>
             <property name="javax.persistence.jdbc.password" value="app"/>
+            <property name="openjpa.Log" value="SQL=Trace" />            
         </properties>
     </persistence-unit>
 </persistence>

@@ -4,17 +4,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.web.mvc.entity.JPAUtil;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
-public class Test1 {
+public class Test_Person {
 
     static EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
 
     public static void main(String[] args) throws Exception {
-        //add("老李");
+        //add("老鐵");
         //get((long) 51);
         //query();
         //update(51L, "小胖");
-        delete(51L);
+        //delete(51L);
+        queryKeyword("%老");
+        // 1.%老:搜尋結尾是老; 2.%老%:搜尋只要有老; 3.老%:搜尋開頭是老
     }
 
     public static void add(String name) {
@@ -37,6 +40,26 @@ public class Test1 {
         ObjectMapper om = new ObjectMapper();
         List<Person> list =
         em.createQuery("SELECT p FROM Person p", Person.class).getResultList();
+        String json = om.writeValueAsString(list);
+        System.out.println(json);
+    }
+    
+    public static void query(String name) throws Exception {
+        ObjectMapper om = new ObjectMapper();
+        TypedQuery<Person> tq =
+        em.createQuery("SELECT p FROM Person p WHERE p.name = :name", Person.class);
+        tq.setParameter("name", name);
+        List<Person> list = tq.getResultList();
+        String json = om.writeValueAsString(list);
+        System.out.println(json);
+    }
+    
+    public static void queryKeyword(String keyword) throws Exception {
+        ObjectMapper om = new ObjectMapper();
+        TypedQuery<Person> tq =
+        em.createQuery("SELECT p FROM Person p WHERE p.name like :keyword", Person.class);
+        tq.setParameter("keyword", keyword);
+        List<Person> list = tq.getResultList();
         String json = om.writeValueAsString(list);
         System.out.println(json);
     }
