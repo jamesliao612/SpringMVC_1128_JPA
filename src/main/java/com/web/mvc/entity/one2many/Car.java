@@ -24,15 +24,14 @@ public class Car {
     @Column
     private String name;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "price_id")
+    private Price price;
+
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "driver_id", referencedColumnName = "id")
-    @JsonIgnoreProperties(value = "car")
+    @JsonIgnoreProperties(value = "cars")
     private Driver driver;
-    
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "price_id")
-    @JsonIgnoreProperties(value = "car")
-    private Price price;
 
     public Long getId() {
         return id;
@@ -66,5 +65,4 @@ public class Car {
         this.price = price;
     }
 
-    
 }

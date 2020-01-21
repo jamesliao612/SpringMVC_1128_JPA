@@ -8,6 +8,7 @@
         <class>com.web.mvc.entity.one2one.Wife</class>
         <class>com.web.mvc.entity.one2many.Car</class>
         <class>com.web.mvc.entity.one2many.Driver</class>
+        <class>com.web.mvc.entity.one2many.Price</class>
             
         <properties>
             <!--

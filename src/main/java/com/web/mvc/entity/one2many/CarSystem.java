@@ -2,7 +2,10 @@ package com.web.mvc.entity.one2many;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.web.mvc.entity.JPAUtil;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
@@ -37,9 +40,9 @@ public class CarSystem {
             case 2:
                 System.out.println("請輸入Car Name:");
                 String newCar = sc.next();
-                System.out.println("請輸入Price:");
-                Integer cost = sc.nextInt();
-                addCar(newCar, cost);
+                System.out.println("請輸入Cost:");
+                Integer newCost = sc.nextInt();
+                addCar(newCar, newCost);
                 break;
             case 3:
                 queryDrivers();
@@ -72,6 +75,7 @@ public class CarSystem {
                 sell(seller, car, buyer);
                 break;
             case 9:
+                asset();
                 break;
             case 0:
                 return;
@@ -91,7 +95,7 @@ public class CarSystem {
         price.setCost(cost);
         Car car = new Car();
         car.setName(name);
-        car.setPrice(price);        
+        car.setPrice(price);
         persist(car);
         System.out.println("Car新增成功");
     }
@@ -182,6 +186,14 @@ public class CarSystem {
                 }
             }
         }
+    }
+    
+    public static void asset(){
+        List<Driver> drivers = em.createQuery("SELECT d FROM Driver d", Driver.class).getResultList();
+        drivers.stream().forEach(d -> {
+            int sum = d.getCars().stream().mapToInt(c -> c.getPrice().getCost()).sum();
+            System.out.printf("%s 擁有車輛合計總資產為 %,d\n", d.getName(),sum);
+        });
     }
 
     public static void persist(Object object) {
