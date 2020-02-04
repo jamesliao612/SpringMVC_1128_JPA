@@ -1,0 +1,13 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<div id="menu">
+    <div class="pure-menu">
+        <a class="pure-menu-heading" href="/SpringMVC/portfolio/index.jsp">Portfolio</a>
+
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link">項目一</a></li>
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link">項目二</a></li>
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link">項目三</a></li>
+        </ul>
+    </div>
+</div>
