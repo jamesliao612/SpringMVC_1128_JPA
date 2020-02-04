@@ -9,6 +9,8 @@
         <class>com.web.mvc.entity.one2many.Car</class>
         <class>com.web.mvc.entity.one2many.Driver</class>
         <class>com.web.mvc.entity.one2many.Price</class>
+        <class>com.web.mvc.entity.many2many.Fund</class>
+        <class>com.web.mvc.entity.many2many.Stock</class>
             
         <properties>
             <!--
@@ -21,7 +23,9 @@
             <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
             <property name="javax.persistence.jdbc.user" value="app"/>
             <property name="javax.persistence.jdbc.password" value="app"/>
-            <property name="openjpa.Log" value="SQL=Trace" />            
+            <!-- 顯示資料庫運行log
+            <property name="openjpa.Log" value="SQL=Trace" />
+            -->
         </properties>
     </persistence-unit>
 </persistence>
