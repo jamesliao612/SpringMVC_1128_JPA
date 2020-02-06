@@ -14,17 +14,28 @@ import javax.persistence.Table;
 @Entity
 @Table
 public class Classify {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     @Column
     private String name;
-    
-    @OneToMany(cascade = CascadeType.PERSIST,mappedBy = "classify")
-    @JsonIgnoreProperties(value = "classify")
-    private Set<Tstock> tstocks;
+
+    @Column
+    private Boolean transaction;
+
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "classify")
+    @JsonIgnoreProperties("classify")
+    private Set<TStock> tStocks;
+
+    public Classify(String name, Boolean transaction) {
+        this.name = name;
+        this.transaction = transaction;
+    }
+
+    public Classify() {        
+    }
 
     public Long getId() {
         return id;
@@ -42,12 +53,19 @@ public class Classify {
         this.name = name;
     }
 
-    public Set<Tstock> getTstocks() {
-        return tstocks;
+    public Boolean getTransaction() {
+        return transaction;
     }
 
-    public void setTstocks(Set<Tstock> tstocks) {
-        this.tstocks = tstocks;
+    public void setTransaction(Boolean transaction) {
+        this.transaction = transaction;
     }
-    
+
+    public Set<TStock> gettStocks() {
+        return tStocks;
+    }
+
+    public void settStocks(Set<TStock> tStocks) {
+        this.tStocks = tStocks;
+    }
 }

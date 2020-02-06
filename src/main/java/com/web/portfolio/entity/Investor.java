@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,13 +29,31 @@ public class Investor {
     @Column
     private String password;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "investor")
+    @Column
+    private Integer balance;
+
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "investor", fetch = FetchType.EAGER)
     @JsonIgnoreProperties(value = "investor")
     private Set<Watch> watchs;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "investor")
     @JsonIgnoreProperties(value = "investor")
     private Set<Portfolio> portfolios;
+
+    public Investor(String username, String password, String email, Integer balance) {
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.balance = balance;
+    }
+
+    public Integer getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Integer balance) {
+        this.balance = balance;
+    }
 
     public Long getId() {
         return id;
@@ -83,5 +102,7 @@ public class Investor {
     public void setPortfolios(Set<Portfolio> portfolios) {
         this.portfolios = portfolios;
     }
-    
+
+    public Investor() {
+    }    
 }

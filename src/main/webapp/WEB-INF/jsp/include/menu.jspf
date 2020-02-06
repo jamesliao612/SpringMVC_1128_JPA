@@ -5,9 +5,9 @@
         <a class="pure-menu-heading" href="/SpringMVC_1128_JPA/portfolio/index.jsp">Portfolio</a>
 
         <ul class="pure-menu-list">
-            <li class="pure-menu-item"><a href="#" class="pure-menu-link">項目一</a></li>
-            <li class="pure-menu-item"><a href="#" class="pure-menu-link">項目二</a></li>
-            <li class="pure-menu-item"><a href="#" class="pure-menu-link">項目三</a></li>
+            <li class="pure-menu-item"><a href="/SpringMVC_1128_JPA/portfolio/investor.jsp" class="pure-menu-link">Investor</a></li>
+            <li class="pure-menu-item"><a href="/SpringMVC_1128_JPA/portfolio/classify.jsp" class="pure-menu-link">Classify</a></li>
+            <li class="pure-menu-item"><a href="/SpringMVC_1128_JPA/mvc/portfolio/logout" class="pure-menu-link">登出 Logout</a></li>
         </ul>
     </div>
 </div>

@@ -18,28 +18,36 @@ import javax.persistence.Table;
 @Entity
 @Table
 public class Portfolio {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     @Column
     private Integer amount;
-    
+
     @Column
     private Double cost;
-    
+
     @Column
-    private Date date;
-    
+    private Date date = new Date();
+
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "investor_id",referencedColumnName = "id")
+    @JoinColumn(name = "investor_id", referencedColumnName = "id")
     @JsonIgnoreProperties(value = "portfolio")
     private Investor investor;
-    
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "tStock_id",
-            foreignKey = @ForeignKey(name = "tStock_fk",value = ConstraintMode.CONSTRAINT))
-    private Tstock tStock;
+            foreignKey = @ForeignKey(name = "tStock_fk", value = ConstraintMode.CONSTRAINT))
+    private TStock tStock;
+
+    public Portfolio(Double cost, Integer amount, Investor investor, TStock tStock) {
+        this.amount = amount;
+        this.cost = cost;
+        this.investor = investor;
+        this.tStock = tStock;
+    }
 
     public Long getId() {
         return id;
@@ -81,12 +89,12 @@ public class Portfolio {
         this.investor = investor;
     }
 
-    public Tstock getTstock() {
+    public TStock getTstock() {
         return tStock;
     }
 
-    public void setTstock(Tstock tstock) {
+    public void setTstock(TStock tstock) {
         this.tStock = tstock;
     }
-    
+
 }

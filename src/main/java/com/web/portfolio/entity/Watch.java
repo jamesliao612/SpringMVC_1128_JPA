@@ -1,6 +1,8 @@
 package com.web.portfolio.entity;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,31 +17,31 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Watch{
-    
+public class Watch {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     @Column
     private String name;
-    
+
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "Investor_id",referencedColumnName = "id")
+    @JoinColumn(name = "Investor_id", referencedColumnName = "id")
     private Investor investor;
-    
+
     @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "watch_tstock", 
+    @JoinTable(name = "watch_tstock",
             joinColumns = {
-                @JoinColumn(name = "watch_id", 
-                            nullable = false, updatable = false)
+                @JoinColumn(name = "watch_id",
+                        nullable = false, updatable = false)
             },
             inverseJoinColumns = {
-                @JoinColumn(name = "tStock_id", 
-                            nullable = false, updatable = false)
+                @JoinColumn(name = "tStock_id",
+                        nullable = false, updatable = false)
             }
     )
-    private Set<Tstock> tStocks;
+    private Set<TStock> tStocks = new LinkedHashSet<TStock>();
 
     public Long getId() {
         return id;
@@ -65,12 +67,21 @@ public class Watch{
         this.investor = investor;
     }
 
-    public Set<Tstock> gettStocks() {
+    public Set<TStock> gettStocks() {
         return tStocks;
     }
 
-    public void settStocks(Set<Tstock> tStocks) {
+    public void settStocks(Set<TStock> tStocks) {
         this.tStocks = tStocks;
     }
-    
+
+    public Set<TStock> addtStock(TStock tStock) {
+        tStocks.add(tStock);
+        return tStocks;
+    }
+
+    public Set<TStock> removetStock(TStock tStock) {
+        tStocks.remove(tStock);
+        return tStocks;
+    }
 }
