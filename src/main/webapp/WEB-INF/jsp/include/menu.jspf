@@ -2,7 +2,7 @@
 <%@ page pageEncoding="UTF-8" %>
 <div id="menu">
     <div class="pure-menu">
-        <a class="pure-menu-heading" href="/SpringMVC/portfolio/index.jsp">Portfolio</a>
+        <a class="pure-menu-heading" href="/SpringMVC_1128_JPA/portfolio/index.jsp">Portfolio</a>
 
         <ul class="pure-menu-list">
             <li class="pure-menu-item"><a href="#" class="pure-menu-link">項目一</a></li>
