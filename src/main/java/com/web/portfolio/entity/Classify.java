@@ -27,7 +27,7 @@ public class Classify {
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "classify")
     @JsonIgnoreProperties("classify")
-    private Set<TStock> tStocks;
+    private Set<Qweqweqweqwe> tStocks;
 
     public Classify(String name, Boolean transaction) {
         this.name = name;
@@ -61,11 +61,11 @@ public class Classify {
         this.transaction = transaction;
     }
 
-    public Set<TStock> gettStocks() {
+    public Set<Qweqweqweqwe> gettStocks() {
         return tStocks;
     }
 
-    public void settStocks(Set<TStock> tStocks) {
+    public void settStocks(Set<Qweqweqweqwe> tStocks) {
         this.tStocks = tStocks;
     }
 }

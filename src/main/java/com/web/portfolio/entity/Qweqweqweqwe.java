@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Tstock {
+public class Qweqweqweqwe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -45,13 +45,19 @@ public class Tstock {
     private Long volumn;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "watch_id",referencedColumnName = "id")
+    @JoinColumn(name = "watch_id", referencedColumnName = "id")
     @JsonIgnoreProperties(value = "tStocks")
     private Classify classify;
 
     @ManyToMany(mappedBy = "tStocks")
     @JsonIgnoreProperties(value = "tStocks")
     private Set<Watch> watchs;
+
+    public Qweqweqweqwe(String symbol, String name, Classify classify) {
+        this.name = name;
+        this.symbol = symbol;
+        this.classify = classify;
+    }
 
     public Long getId() {
         return id;
@@ -132,5 +138,5 @@ public class Tstock {
     public void setWatchs(Set<Watch> watchs) {
         this.watchs = watchs;
     }
-    
+
 }

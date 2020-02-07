@@ -40,9 +40,9 @@ public class Portfolio {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "tStock_id",
             foreignKey = @ForeignKey(name = "tStock_fk", value = ConstraintMode.CONSTRAINT))
-    private TStock tStock;
+    private Qweqweqweqwe tStock;
 
-    public Portfolio(Double cost, Integer amount, Investor investor, TStock tStock) {
+    public Portfolio(Double cost, Integer amount, Investor investor, Qweqweqweqwe tStock) {
         this.amount = amount;
         this.cost = cost;
         this.investor = investor;
@@ -89,11 +89,11 @@ public class Portfolio {
         this.investor = investor;
     }
 
-    public TStock getTstock() {
+    public Qweqweqweqwe getTstock() {
         return tStock;
     }
 
-    public void setTstock(TStock tstock) {
+    public void setTstock(Qweqweqweqwe tstock) {
         this.tStock = tstock;
     }
 
