@@ -14,6 +14,7 @@
                         console.log(JSON.stringify(data));
                         $("#myform").find("#id").val(data.id);
                         $("#myform").find("#name").val(data.name);
+                        $("#myform").find("#transaction").val(String(data.transaction));
                     });
                 });
                 $("#add").on("click", function () {
@@ -71,10 +72,11 @@
                     console.log("Datas: " + datas);
                     $("#myTable tbody > tr").remove();
                     $.each(datas, function (i, item) {
-                        var html = '<tr><td>{0}</td><td>{1}</td></tr>';
+                        var html = '<tr><td>{0}</td><td>{1}</td><td>{2}</td></tr>';
                         $('#myTable').append(String.format(html,
                                 item.id,
                                 item.name,
+                                item.transaction?'Yes':'No'
                                 ));
                     });
                 });
@@ -103,6 +105,11 @@
                                     
                                     <input id="id" vslue="0"   name="id" placeholder="ID" readonly="true"/><p />
                                     <input id="name" name="name" placeholder="name"/><p />
+                                    <select name="transaction" id="transaction">
+                                        <option value="true">可交易</option>
+                                        <option value="false">不可交易</option>
+                                    </select><p />
+                                    
                                     
                                     <button id="add" type="button" class="pure-button pure-button-primary">新增</button>
                                     <button id="upt" type="button" class="pure-button pure-button-primary">修改</button>
@@ -123,6 +130,7 @@
                                             <tr>
                                                 <th>id</th>
                                                 <th>name</th>
+                                                <th>transaction</th>
                                             </tr>
                                         </thead>
                                         <tbody>

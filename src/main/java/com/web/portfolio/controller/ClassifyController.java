@@ -48,6 +48,8 @@ public class ClassifyController {
     public Classify add(@RequestBody Map<String, String> map) {
         Classify classify = new Classify();
         classify.setName(map.get("name"));
+        Boolean ts = map.get("transaction").equals("true");
+        classify.setTransaction(ts);
         em.persist(classify);
         // 取得最新 id
         em.flush();
@@ -63,6 +65,8 @@ public class ClassifyController {
             return false;
         }
         o_Classify.setName(map.get("name"));
+        Boolean ts = map.get("transaction").equals("true");
+        o_Classify.setTransaction(ts);
         em.persist(o_Classify);
         em.flush();
         return true;
