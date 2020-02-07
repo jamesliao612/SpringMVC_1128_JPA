@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Qweqweqweqwe {
+public class TStock {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -53,7 +53,7 @@ public class Qweqweqweqwe {
     @JsonIgnoreProperties(value = "tStocks")
     private Set<Watch> watchs;
 
-    public Qweqweqweqwe(String symbol, String name, Classify classify) {
+    public TStock(String symbol, String name, Classify classify) {
         this.name = name;
         this.symbol = symbol;
         this.classify = classify;

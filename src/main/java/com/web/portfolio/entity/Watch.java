@@ -41,7 +41,7 @@ public class Watch {
                         nullable = false, updatable = false)
             }
     )
-    private Set<Qweqweqweqwe> tStocks = new LinkedHashSet<Qweqweqweqwe>();
+    private Set<TStock> tStocks = new LinkedHashSet<TStock>();
 
     public Long getId() {
         return id;
@@ -67,20 +67,20 @@ public class Watch {
         this.investor = investor;
     }
 
-    public Set<Qweqweqweqwe> gettStocks() {
+    public Set<TStock> gettStocks() {
         return tStocks;
     }
 
-    public void settStocks(Set<Qweqweqweqwe> tStocks) {
+    public void settStocks(Set<TStock> tStocks) {
         this.tStocks = tStocks;
     }
 
-    public Set<Qweqweqweqwe> addtStock(Qweqweqweqwe tStock) {
+    public Set<TStock> addtStock(TStock tStock) {
         tStocks.add(tStock);
         return tStocks;
     }
 
-    public Set<Qweqweqweqwe> removetStock(Qweqweqweqwe tStock) {
+    public Set<TStock> removetStock(TStock tStock) {
         tStocks.remove(tStock);
         return tStocks;
     }
