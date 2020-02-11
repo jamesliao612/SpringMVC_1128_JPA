@@ -36,7 +36,7 @@ public class Investor {
     @JsonIgnoreProperties(value = "investor")
     private Set<Watch> watchs;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "investor")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "investor", fetch = FetchType.EAGER)
     @JsonIgnoreProperties(value = "investor")
     private Set<Portfolio> portfolios;
 

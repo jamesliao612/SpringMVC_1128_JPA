@@ -84,4 +84,13 @@ public class Watch {
         tStocks.remove(tStock);
         return tStocks;
     }
+
+    public Watch() {
+    }
+
+    public Watch(String name, Investor investor) {
+        this.name = name;
+        this.investor = investor;
+    }
+
 }

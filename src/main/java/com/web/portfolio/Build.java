@@ -6,6 +6,8 @@ import com.web.portfolio.entity.Investor;
 import com.web.portfolio.entity.Portfolio;
 import com.web.portfolio.entity.TStock;
 import com.web.portfolio.entity.Watch;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import javax.persistence.EntityManager;
 
 public class Build {
@@ -35,20 +37,27 @@ public class Build {
         TStock ts7 = new TStock("^TWII", "台灣加權", classify3);
         TStock ts8 = new TStock("^IXIC", "納斯達克", classify3);
         TStock ts9 = new TStock("^DJI", "道瓊工業", classify3);
-
+        Set<TStock> tstocks = new LinkedHashSet<>();
+        
+        tstocks.add(ts1);
+        tstocks.add(ts2);
+        tstocks.add(ts3);
+        tstocks.add(ts4);
+        tstocks.add(ts5);
+        tstocks.add(ts6);
+        tstocks.add(ts7);
+        tstocks.add(ts8);
+        tstocks.add(ts9);
+        
         Portfolio portfolio1 = new Portfolio(60.5, 2000, investor1, ts1);
         Portfolio portfolio2 = new Portfolio(35.5, 5000, investor1, ts2);
 
-        Watch watch = new Watch();
-        watch.addtStock(ts1);
-        watch.addtStock(ts2);
-        watch.addtStock(ts4);
-        watch.addtStock(ts6);
-        watch.addtStock(ts7);
-        watch.addtStock(ts9);
-        watch.setInvestor(investor1);
-        watch.setName("我的觀察股");
-
+        Watch watch = new Watch("我的觀察清單", investor1);
+        Watch watch2 = new Watch("我的觀察清單", investor2);
+        
+        tstocks.stream().forEach(ts -> watch.addtStock(ts));
+        tstocks.stream().forEach(ts -> watch2.addtStock(ts));
+        
         em.getTransaction().begin();
         em.persist(ts1);
         em.persist(ts2);
@@ -64,6 +73,7 @@ public class Build {
         em.persist(portfolio1);
         em.persist(portfolio2);
         em.persist(watch);
+        em.persist(watch2);
         em.getTransaction().commit();
 
         System.out.println("OK");

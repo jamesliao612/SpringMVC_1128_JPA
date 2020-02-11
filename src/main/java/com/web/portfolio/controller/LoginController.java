@@ -30,6 +30,7 @@ public class LoginController {
             
             if (investor != null && investor.getPassword().equals(password)) {
                 session.setAttribute("investor", investor);
+                session.setAttribute("watch_id", investor.getWatchs().iterator().next().getId());
                 if(referer.contains("login.jsp")) {
                     return "redirect:/portfolio/index.jsp";
                 }

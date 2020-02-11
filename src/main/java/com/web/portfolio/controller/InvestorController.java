@@ -1,6 +1,7 @@
 package com.web.portfolio.controller;
 
 import com.web.portfolio.entity.Investor;
+import com.web.portfolio.entity.Watch;
 import java.util.List;
 import java.util.Map;
 import javax.persistence.EntityManager;
@@ -50,7 +51,11 @@ public class InvestorController {
         investor.setPassword(map.get("password"));
         investor.setEmail(map.get("email"));
         investor.setBalance(Integer.parseInt(map.get("balance")));
+        
+        Watch watch = new Watch("我的觀察清單", investor);
+        
         em.persist(investor);
+        em.persist(watch);
         // 取得最新 id
         em.flush();
         Long id = investor.getId();

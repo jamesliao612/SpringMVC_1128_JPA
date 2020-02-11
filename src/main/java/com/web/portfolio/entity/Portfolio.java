@@ -42,6 +42,13 @@ public class Portfolio {
             foreignKey = @ForeignKey(name = "tStock_fk", value = ConstraintMode.CONSTRAINT))
     private TStock tStock;
 
+    public Portfolio() {
+    }
+
+    
+    
+    
+    
     public Portfolio(Double cost, Integer amount, Investor investor, TStock tStock) {
         this.amount = amount;
         this.cost = cost;
