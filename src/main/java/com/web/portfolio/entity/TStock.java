@@ -12,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
 
 @Entity
 public class TStock implements Serializable {
@@ -44,7 +43,6 @@ public class TStock implements Serializable {
     private Long volumn;
     
     @Column
-    @Temporal(javax.persistence.TemporalType.DATE)
     private Date transactionDate;
     
     @ManyToOne(cascade=CascadeType.PERSIST)

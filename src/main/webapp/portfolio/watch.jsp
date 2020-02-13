@@ -131,7 +131,7 @@
             <div id="main">
                 <div class="header">
                     <h1>Watch</h1>
-                    <h2>我的觀察股, watch_id: ${sessionScope.watch_id}</h2>
+                    <h2>我的觀察股<!--watch_id: ${sessionScope.watch_id}--></h2>
                 </div>
                 <table>
                     <td valign="top">

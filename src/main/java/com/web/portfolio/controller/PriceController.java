@@ -1,16 +1,20 @@
 package com.web.portfolio.controller;
 
 import com.web.portfolio.entity.TStock;
+import java.util.Calendar;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
+import yahoofinance.histquotes.HistoricalQuote;
+import yahoofinance.histquotes.Interval;
 
 @RestController
 @RequestMapping("/portfolio/price")
@@ -42,5 +46,21 @@ public class PriceController {
             }
         }
         return list;
+    }
+    
+    @GetMapping(value = {"/histquotes/{symbol}"}) // 歷史股價
+    public List<HistoricalQuote> queryHistQuotes(@PathVariable("symbol") String symbol) {
+        List<HistoricalQuote> histQuotes = null;
+        try {
+            Calendar from = Calendar.getInstance();
+            Calendar to = Calendar.getInstance();
+            from.add(Calendar.MONTH, -1);
+
+            Stock google = YahooFinance.get(symbol);
+            histQuotes = google.getHistory(from, to, Interval.DAILY);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return histQuotes;
     }
 }
