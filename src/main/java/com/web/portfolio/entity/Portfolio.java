@@ -96,11 +96,11 @@ public class Portfolio {
         this.investor = investor;
     }
 
-    public TStock getTstock() {
+    public TStock gettStock() {
         return tStock;
     }
 
-    public void setTstock(TStock tstock) {
+    public void settStock(TStock tstock) {
         this.tStock = tstock;
     }
 

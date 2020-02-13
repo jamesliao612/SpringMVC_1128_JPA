@@ -8,10 +8,8 @@
             <li class="pure-menu-item"><a href="/SpringMVC_1128_JPA/portfolio/classify.jsp" class="pure-menu-link">Classify</a></li>
             <li class="pure-menu-item"><a href="/SpringMVC_1128_JPA/portfolio/tstock.jsp" class="pure-menu-link">TStock</a></li>                        
             <li class="pure-menu-item"><a href="/SpringMVC_1128_JPA/portfolio/watch.jsp" class="pure-menu-link">Watch</a></li>
-            <li class="pure-menu-item"><a href="/SpringMVC_1128_JPA/portfolio/watchlist.jsp" class="pure-menu-link">Watch List</a></li>
-            <!--            
-            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Asset</a></li>
-            -->
+            <li class="pure-menu-item"><a href="/SpringMVC_1128_JPA/portfolio/watchlist.jsp" class="pure-menu-link">Watch List</a></li>            
+            <li class="pure-menu-item"><a href="/SpringMVC_1128_JPA/portfolio/asset.jsp" class="pure-menu-link">Asset</a></li>
             <li class="pure-menu-item"><a href="/SpringMVC_1128_JPA/mvc/portfolio/price/refresh" class="pure-menu-link">Refresh Price</a></li>
             <li class="pure-menu-item"><a href="/SpringMVC_1128_JPA/mvc/portfolio/price/histquotes/^TWII" class="pure-menu-link">History Price</a></li>
             <li class="pure-menu-item"><a href="/SpringMVC_1128_JPA/mvc/portfolio/logout" class="pure-menu-link">Logout</a></li>
