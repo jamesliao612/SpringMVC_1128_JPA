@@ -16,8 +16,9 @@ public class LoginFilter extends HttpFilter {
 
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
+        String url = req.getRequestURL().toString();
         HttpSession session = req.getSession(false);
-        if (session != null && session.getAttribute("investor") != null) {
+        if (url.contains("verify.jsp") || session != null && session.getAttribute("investor") != null) {
             chain.doFilter(req, res);
             return;
         }

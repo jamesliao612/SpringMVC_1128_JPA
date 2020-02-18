@@ -48,7 +48,7 @@ public class PriceController {
         return list;
     }
     
-    @GetMapping(value = {"/histquotes/{symbol}"}) // 歷史股價
+    @GetMapping(value = {"/histquotes/{symbol:.+}"}) // 歷史股價
     public List<HistoricalQuote> queryHistQuotes(@PathVariable("symbol") String symbol) {
         List<HistoricalQuote> histQuotes = null;
         try {

@@ -2,12 +2,14 @@ package com.web.portfolio.controller;
 
 import com.web.portfolio.entity.Investor;
 import com.web.portfolio.entity.Watch;
+import com.web.portfolio.service.EmailService;
 import java.util.List;
 import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +25,9 @@ public class InvestorController {
     
     @PersistenceContext
     protected EntityManager em;
+    
+    @Autowired
+    private EmailService emailService;
     
     @GetMapping(value = {"/", "/query"})
     public List<Investor> query() {
@@ -61,6 +66,9 @@ public class InvestorController {
         // 取得最新 id
         em.flush();
         Long id = investor.getId();
+        
+        //發送驗證信
+        emailService.send(investor);
         return investor;
     }
     
