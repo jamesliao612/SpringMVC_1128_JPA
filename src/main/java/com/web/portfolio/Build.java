@@ -20,7 +20,8 @@ public class Build {
 
     public static void init() throws Exception {
         Investor investor1 = new Investor("admin", "1234", "admin@java.com", 10000000);
-        Investor investor2 = new Investor("john", "1111", "john@java.com", 5000000);
+        investor1.setCode(Integer.toHexString(investor1.hashCode()));
+        investor1.setPass(Boolean.TRUE);
 
         Classify classify1 = new Classify("股票", true);
         Classify classify2 = new Classify("匯率", true);
@@ -49,14 +50,9 @@ public class Build {
         tstocks.add(ts8);
         tstocks.add(ts9);
         
-        Portfolio portfolio1 = new Portfolio(60.5, 2000, investor1, ts1);
-        Portfolio portfolio2 = new Portfolio(35.5, 5000, investor1, ts2);
-
         Watch watch = new Watch("我的觀察清單", investor1);
-        Watch watch2 = new Watch("我的觀察清單", investor2);
         
         tstocks.stream().forEach(ts -> watch.addtStock(ts));
-        tstocks.stream().forEach(ts -> watch2.addtStock(ts));
         
         em.getTransaction().begin();
         em.persist(ts1);
@@ -69,11 +65,7 @@ public class Build {
         em.persist(ts8);
         em.persist(ts9);
         em.persist(investor1);
-        em.persist(investor2);
-        em.persist(portfolio1);
-        em.persist(portfolio2);
         em.persist(watch);
-        em.persist(watch2);
         em.getTransaction().commit();
 
         System.out.println("OK");
